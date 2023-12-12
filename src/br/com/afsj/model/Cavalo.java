@@ -13,4 +13,14 @@ public class Cavalo extends Peca {
 		}
 		return false;
 	}
+
+	public Cavalo (){
+		// stub
+	}
+
+	public Cavalo (Peao peao){
+		this.posX = peao.getPosX();
+		this.posY = peao.getPosY();
+		this.cor = peao.cor;
+	}
 }

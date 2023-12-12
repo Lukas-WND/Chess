@@ -45,4 +45,5 @@ public class Peao extends Peca {
 		}
 		return false;		
 	}
+
 }

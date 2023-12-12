@@ -24,7 +24,6 @@ public class TradutorEspanhol implements Tradutor, Icone {
 
 	@Override
 	public Icon traduzirIcone(String palavra) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

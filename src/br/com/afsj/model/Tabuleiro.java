@@ -19,16 +19,37 @@ public class Tabuleiro {
 	protected static Peca pecaMarcada = null;
 	protected static IPeca iPecaMarcada = null;
 	
-	protected static ITabuleiro iTabuleiro = new ITabuleiro();
+	protected static ITabuleiro iTabuleiro = new ITabuleiro(); 
 	
-	protected static Peao peaoBranco1 = new Peao();
-	protected static IPeao iPeaoBranco1 = new IPeao(peaoBranco1);
-	
-	protected static Peao peaoBranco2 = new Peao();
-	protected static IPeao iPeaoBranco2 = new IPeao(peaoBranco2);
+	//protected static ArrayList<Peao> peoesBrancos = new ArrayList<Peao>();
+	protected static Peao[] peoesBrancos = new Peao[8];
+	static {
+		for (int i = 0; i < peoesBrancos.length; i++) {
+			peoesBrancos[i] = new Peao();
+		}
+	}
 
-	protected static Peao peaoPreto1 = new Peao();
-	protected static IPeao iPeaoPreto1 = new IPeao(peaoPreto1);
+	protected static IPeao[] iPeoesBrancos = new IPeao[8];
+	static {
+		for (int i = 0; i < iPeoesBrancos.length; i++) {
+			iPeoesBrancos[i] = new IPeao(peoesBrancos[i]);
+		}
+	}
+
+
+	protected static Peao[] peoesPretos = new Peao[8];
+	static {
+		for (int i = 0; i < peoesPretos.length; i++) {
+			peoesPretos[i] = new Peao();
+		}
+	}
+
+	protected static IPeao[] iPeoesPretos = new IPeao[8];
+	static {
+		for (int i = 0; i < iPeoesPretos.length; i++) {
+			iPeoesPretos[i] = new IPeao(peoesPretos[i]);
+		}
+	}
 	
 	protected static Cavalo cavaloPreto1 = new Cavalo();
 	protected static ICavalo iCavaloPreto1 = new ICavalo(cavaloPreto1);
@@ -42,22 +63,25 @@ public class Tabuleiro {
 
 		TELA = new JFrame(t.traduzir("Xadrez"));
 
-		// Brancas
-		peaoBranco1.setCor(Xadrez.corBRANCA);
-		peaoBranco1.mover(0, 6);
-		iPeaoBranco1.setIconeBranco(new ImageIcon("imagens/Peao-Brancas-Branco.png"));
-		iPeaoBranco1.setIconeMarrom(new ImageIcon("imagens/Peao-Brancas-Marrom.png"));
-		iPeaoBranco1.mover(0, 6);
-		TELA.getContentPane().add(iPeaoBranco1.getImagem());
-		listaBrancas.add(peaoBranco1);
+		for(int i = 0; i < peoesBrancos.length; i ++){
+			peoesBrancos[i].setCor(Xadrez.corBRANCA);
+			peoesBrancos[i].mover(i, 6);
+			iPeoesBrancos[i].setIconeBranco(new ImageIcon("imagens/Peao-Brancas-Branco.png"));
+			iPeoesBrancos[i].setIconeMarrom(new ImageIcon("imagens/Peao-Brancas-Marrom.png"));
+			iPeoesBrancos[i].mover(i, 6);
+			TELA.getContentPane().add(iPeoesBrancos[i].getImagem());
+			listaBrancas.add(peoesBrancos[i]);
+		}
 
-		peaoBranco2.setCor(Xadrez.corBRANCA);
-		peaoBranco2.mover(1, 6);
-		iPeaoBranco2.setIconeBranco(new ImageIcon("imagens/Peao-Brancas-Branco.png"));
-		iPeaoBranco2.setIconeMarrom(new ImageIcon("imagens/Peao-Brancas-Marrom.png"));
-		iPeaoBranco2.mover(1, 6);
-		TELA.getContentPane().add(iPeaoBranco2.getImagem());
-		listaBrancas.add(peaoBranco2);
+		for(int i = 0; i < peoesPretos.length; i ++){
+			peoesPretos[i].setCor(Xadrez.corPRETA);
+			peoesPretos[i].mover(i, 1);
+			iPeoesPretos[i].setIconeBranco(new ImageIcon("imagens/Peao-Pretas-Branco.png"));
+			iPeoesPretos[i].setIconeMarrom(new ImageIcon("imagens/Peao-Pretas-Marrom.png"));
+			iPeoesPretos[i].mover(i, 1);
+			TELA.getContentPane().add(iPeoesPretos[i].getImagem());
+			listaPretas.add(peoesPretos[i]);
+		}
 
 		cavaloBranco1.setCor(Xadrez.corBRANCA);
 		cavaloBranco1.mover(1, 7);
@@ -66,15 +90,6 @@ public class Tabuleiro {
 		iCavaloBranco1.mover(1, 7);
 		TELA.getContentPane().add(iCavaloBranco1.getImagem());
 		listaBrancas.add(cavaloBranco1);
-		
-		// Pretas
-		peaoPreto1.setCor(Xadrez.corPRETA);
-		peaoPreto1.mover(0, 1);
-		iPeaoPreto1.setIconeBranco(new ImageIcon("imagens/Peao-Pretas-Branco.png"));
-		iPeaoPreto1.setIconeMarrom(new ImageIcon("imagens/Peao-Pretas-Marrom.png"));
-		iPeaoPreto1.mover(0, 1);
-		TELA.getContentPane().add(iPeaoPreto1.getImagem());
-		listaPretas.add(peaoPreto1);
 
 		cavaloPreto1.setCor(Xadrez.corPRETA);
 		cavaloPreto1.mover(1, 0);
