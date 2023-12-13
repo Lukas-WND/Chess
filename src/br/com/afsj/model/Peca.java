@@ -6,8 +6,9 @@ public abstract class Peca {
 	protected int cor;
 	protected int posX = -1;
 	protected int posY = -1;
+	protected int movimento = 0;
 	
-	// Métodos
+	// Mï¿½todos
 	public int getCor() {
 		return cor;
 	}
@@ -22,6 +23,13 @@ public abstract class Peca {
 	}
 	public String getNome(){
 		return this.getClass().getName();
+	}
+	
+	public int getMovimento() {
+		return this.movimento;
+	}
+	public void setMovimento(int movimento) {
+		this.movimento = movimento;
 	}
 	
 	public boolean mover(int x, int y) {
